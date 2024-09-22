@@ -42,5 +42,9 @@ int ringBufferGetValue(RingBuffer *pRingBuffer, int *pValue) {
 }
 
 int ringBufferPutValue(RingBuffer *pRingBuffer, int value) {
+    switch (pRingBuffer->type) {
+        case 0b00000000: // DEFAULT_ALGORITHM
+            return defaultPutValue(pRingBuffer, value);
+    }
     return defaultPutValue(pRingBuffer, value);
 }

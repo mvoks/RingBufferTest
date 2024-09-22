@@ -7,11 +7,16 @@
 struct RingBuffer_;
 typedef struct RingBuffer_ RingBuffer;
 
+typedef enum CIRCULAR_BUFFER_TYPE_ {
+    DEFAULT_ALGORITHM = 0b00000000
+} CIRCULAR_BUFFER_TYPE;
+
 struct RingBuffer_ {
     unsigned capacity;
     int *pData;
     unsigned int first;
     unsigned int last;
+    int type;
 };
 
 extern unsigned ringBufferCapacity(RingBuffer *pRingBuffer);
