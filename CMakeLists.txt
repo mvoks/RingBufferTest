@@ -10,4 +10,8 @@ add_executable(RingBuffer main.c
         DefaultAlgorithm.c
         DefaultAlgorithmTest.h
         DefaultAlgorithmTest.c
+        EndlessAlgorithm.h
+        EndlessAlgorithm.c
+        EndlessAlgorithmTest.h
+        EndlessAlgorithmTest.c
 )

@@ -2,6 +2,7 @@
 // Created by Volodymyr on 22.09.24.
 //
 #include "DefaultAlgorithmTest.h"
+#include "EndlessAlgorithmTest.h"
 
 void defaultAlgorithmTest() {
     // test1
@@ -21,7 +22,20 @@ void defaultAlgorithmTest() {
     defaultAlgorithmCapacityTest();
 }
 
+void endlessAlgorithmTest() {
+    endlessAlgorithmCapacityTest();
+    endlessAlgorithmPutTest(25, 101);
+    endlessAlgorithmCapacityTest();
+    endlessAlgorithmGetTest(5);
+    endlessAlgorithmCapacityTest();
+    endlessAlgorithmPutTest(5, 1001);
+    endlessAlgorithmCapacityTest();
+    endlessAlgorithmGetTest(10);
+    endlessAlgorithmCapacityTest();
+}
+
 int main(void) {
     defaultAlgorithmTest();
+    endlessAlgorithmTest();
     return 0;
 }

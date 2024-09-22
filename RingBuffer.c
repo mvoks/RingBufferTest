@@ -24,6 +24,18 @@ int defaultPutValue(RingBuffer *pCircularBuffer, int value) {
     return 1;
 }
 
+int endlessPutValue(RingBuffer *pCircularBuffer, int value) {
+    unsigned nextFirst = (pCircularBuffer->first + 1) % pCircularBuffer->capacity;
+    if (nextFirst == pCircularBuffer->last) {
+        // buffer is full
+        unsigned nextLast = (pCircularBuffer->last + 1) % pCircularBuffer->capacity;
+        pCircularBuffer->last = nextLast;
+    }
+    pCircularBuffer->pData[pCircularBuffer->first] = value;
+    pCircularBuffer->first = nextFirst;
+    return 1;
+}
+
 unsigned ringBufferCapacity(RingBuffer *pRingBuffer) {
     if (pRingBuffer->first >= pRingBuffer->last) {
         return (pRingBuffer->first - pRingBuffer->last);
@@ -45,6 +57,8 @@ int ringBufferPutValue(RingBuffer *pRingBuffer, int value) {
     switch (pRingBuffer->type) {
         case 0b00000000: // DEFAULT_ALGORITHM
             return defaultPutValue(pRingBuffer, value);
+        case 0b00000001: // ENDLESS_ALGORITHM
+            return endlessPutValue(pRingBuffer, value);
     }
     return defaultPutValue(pRingBuffer, value);
 }

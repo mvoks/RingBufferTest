@@ -8,7 +8,8 @@ struct RingBuffer_;
 typedef struct RingBuffer_ RingBuffer;
 
 typedef enum CIRCULAR_BUFFER_TYPE_ {
-    DEFAULT_ALGORITHM = 0b00000000
+    DEFAULT_ALGORITHM = 0b00000000,
+    ENDLESS_ALGORITHM = 0b00000001
 } CIRCULAR_BUFFER_TYPE;
 
 struct RingBuffer_ {
